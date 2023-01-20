@@ -310,7 +310,7 @@ class EditMedActivity : AppCompatActivity() {
                     }
                 }
 
-                if (false)) {
+                if (false) {
                     requirePhotoProofSwitch.visibility = View.VISIBLE
                 }
                 else {
