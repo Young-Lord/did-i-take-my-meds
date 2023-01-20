@@ -407,10 +407,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.info -> {
-                openAboutActivity()
-                true
-            }
             R.id.sortType -> {
                 val sharedPref = getPreferences(Context.MODE_PRIVATE)
                 when (sortType) {
@@ -445,14 +441,6 @@ class MainActivity : AppCompatActivity() {
                         medicationListAdapter!!.notifyDataSetChanged()
                     }
                 }
-                true
-            }
-            R.id.restore_database -> {
-                restoreDatabase()
-                true
-            }
-            R.id.back_up_database -> {
-                backUpDatabase()
                 true
             }
             else -> super.onOptionsItemSelected(item)
