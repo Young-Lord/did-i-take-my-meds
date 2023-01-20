@@ -88,7 +88,7 @@ class AddMedActivity() : AppCompatActivity() {
     private var monthsBetween = 0
     private var yearsBetween = 0
     private var notify = true
-    private var requirePhotoProof = true
+    private var requirePhotoProof = false
     private var takeWithFood = false
     private val lifecycleDispatcher = Executors.newSingleThreadExecutor().asCoroutineDispatcher()
     private var alarmManager: AlarmManager? = null
@@ -172,7 +172,7 @@ class AddMedActivity() : AppCompatActivity() {
             }
         }
 
-        if (packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
+        if (false) {
             requirePhotoProofSwitch.visibility = View.VISIBLE
         }
         else {
