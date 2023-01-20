@@ -19,29 +19,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/info"
-        android:icon="@drawable/info"
-        android:orderInCategory="1"
-        android:title="@string/about"
-        app:showAsAction="ifRoom" />
-
-    <item
         android:id="@+id/sortType"
         android:icon="@drawable/ic_sort_by_time"
-        android:orderInCategory="2"
+        android:orderInCategory="1"
         android:title="@string/sort"
         app:showAsAction="always"/>
 
-    <item
-        android:id="@+id/restore_database"
-        android:orderInCategory="3"
-        android:title="@string/restore_database"
-        app:showAsAction="never"/>
-
-    <item
-        android:id="@+id/back_up_database"
-        android:orderInCategory="4"
-        android:title="@string/back_up_database"
-        app:showAsAction="never"/>
 
 </menu>
