@@ -22,6 +22,7 @@ package dev.corruptedark.diditakemymeds
 import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -44,6 +45,7 @@ import java.io.File
 //import kotlinx.coroutines.*
 import java.util.concurrent.Executors
 import java.util.zip.ZipInputStream
+import com.android.jarvis.jacoco.JacocoHelper
 
 
 class MainActivity : AppCompatActivity() {
@@ -69,6 +71,7 @@ class MainActivity : AppCompatActivity() {
     private var tempDir: File? = null
     @Volatile private var restoreJob: Job? = null
     @Volatile private var backupJob: Job? = null
+    private var rec: JacocoHelper? = null
 
     private val activityResultStarter =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -287,6 +290,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(JacocoHelper.ACTION)
+        rec = JacocoHelper()
+        registerReceiver(rec, intentFilter)
+        
         createNotificationChannel()
         setContentView(R.layout.activity_main)
         tempDir = File(filesDir.path + File.separator + getString(R.string.temp_dir))
@@ -397,6 +406,11 @@ class MainActivity : AppCompatActivity() {
             refreshJob = startRefresherLoop()
         }
         super.onResume()
+    }
+
+    override fun onDestroy() {
+        unregisterReceiver(rec)
+        super.onDestroy()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

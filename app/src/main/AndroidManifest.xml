@@ -109,6 +109,12 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <receiver android:name="com.android.jarvis.jacoco.JacocoHelper" android:exported="true">
+            <intent-filter>
+                <action android:name="intent.END_COVERAGE"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
